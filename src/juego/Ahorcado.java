@@ -9,9 +9,9 @@ public class Ahorcado {
 		
 		private static final String[] PALABRAS = {
 		        "programacion", "java", "ordenador", "teclado", "variable",
-		        "git", "algoritmo", "servidor", "compilador", "bucle"
+		        "git", "algoritmo", "servidor", "compilador", "bucle", "conseguir", "acudir", "preparacion"
 		    };
-		    private static final int MAX_FALLOS = 6;
+		    private static final int MAX_FALLOS = 8;
 
 		    public static void main(String[] args) {
 		        Scanner sc = new Scanner(System.in);
@@ -24,12 +24,12 @@ public class Ahorcado {
 		            String palabra = PALABRAS[random.nextInt(PALABRAS.length)];
 		            jugarRonda(palabra, sc);
 
-		            System.out.print("¿Quieres jugar otra vez? (s/n): ");
+		            System.out.print("¿Deseas jugar otra vez? (s/n): ");
 		            String respuesta = sc.nextLine().trim().toLowerCase();
 		            seguirJugando = respuesta.equals("s");
 		        }
 
-		        System.out.println("¡Hasta la próxima!");
+		        System.out.println("¡Nos vemos pronto!");
 		        sc.close();
 		    }
 
@@ -54,7 +54,7 @@ public class Ahorcado {
 		            char letra = entrada.charAt(0);
 
 		            if (letrasUsadas.indexOf(String.valueOf(letra)) != -1) {
-		                System.out.println("Ya has usado esa letra.");
+		                System.out.println("Introduce otra letra, esa ya la has usado");
 		                continue;
 		            }
 
@@ -66,18 +66,18 @@ public class Ahorcado {
 		                        oculta.setCharAt(i, letra);
 		                    }
 		                }
-		                System.out.println("¡Bien! La letra está en la palabra.");
+		                System.out.println("¡Bien! La letra es correcta");
 		            } else {
 		                fallos++;
-		                System.out.println("La letra no está. Fallos: " + fallos + "/" + MAX_FALLOS);
+		                System.out.println("La letra no es correcta. Fallos: " + fallos + "/" + MAX_FALLOS);
 		            }
 		        }
 
 		        System.out.println("\n" + dibujo(fallos));
 		        if (oculta.indexOf("_") == -1) {
-		            System.out.println("¡Enhorabuena! Has adivinado: " + palabra);
+		            System.out.println("¡Enhorabuena! Has ganado: " + palabra + ", " + fallos + "/" + MAX_FALLOS + ".");
 		        } else {
-		            System.out.println("Has perdido. La palabra era: " + palabra);
+		            System.out.println("Has perdido. La palabra era: " + palabra + ", " + fallos + "/" + MAX_FALLOS + ".");
 		        }
 		    }
 
